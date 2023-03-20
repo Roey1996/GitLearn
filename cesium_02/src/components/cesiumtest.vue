@@ -3,14 +3,20 @@
 </template>
 
 <script>
+
+let viewer;
 export default{
     name:'cesium',
     mounted(){
         Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1YjcyYTNlOC00OWY5LTQ0ZGMtODIwYy0xODBjYjY1NWRhNGIiLCJpZCI6Mzk2NjEsImlhdCI6MTYwNzc4MTQxM30.glvOaf6iSB9Z30dBT145_SMMmGWi3XH9RfZo7L5Au8M';
-        const viewer = new Cesium.Viewer('cesiumContainer',{
+        viewer = new Cesium.Viewer('cesiumContainer',{
             infoBox: false,
         });
-        console.log(viewer)
+        // console.log(viewer)
+        viewer.dataSources.add(
+            Cesium.GeoJsonDataSource.load('./01_us.json')
+        )
+
     }
 }
 </script>
